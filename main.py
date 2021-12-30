@@ -13,24 +13,15 @@ safe_guessed = 0
 
 client = discord.Client()
 
-def genrate_grid(n, arr):
-  for i in range (n):
-    for j in range (n):
-      arr[i][j] = (random.int()%2)
-      if arr[i][j] == 0:
-        safe_count += 1
-
-
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
-
 @client.event
 async def on_message(message):
+    current_player = message.author
     if message.author == client.user:
         return
-
     if message.content.startswith('mine'):
         current_message = message.content.split()
         if (len(current_message)<3):
@@ -39,7 +30,9 @@ async def on_message(message):
             await message.channel.send(error_message)
         else:
             await message.channel.send("correct command to start playing")
-            
+            on_message(message)
+          
+              
 
 
 
