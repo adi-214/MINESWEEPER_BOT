@@ -74,7 +74,9 @@ async def on_message(message):
         return
     if message.content.startswith('mine'):
         current_player = message.author
-        if current_player not in player_list:
+        if message.content.lower() == "mine help":
+            await message.channel.send("The number of top of the columns represent the total number of number of bombs in that particular column. \nThe number on the right represents the total number of bombs in that particular row. \nThe objective of the goal is to select all the safe tiles. \nTo start playing enter in the following format \nmine <grid_size> <difficulty>\nGrid size must be greater than or equal to 3 \nand lesser than or equal to 10 \nValid difficulty level are <easy> / <medium> / <hard> \nMake your move in the following format \nmine <column number> <row number> \nTo quit playing use the command <mine quit>\n")
+        elif current_player not in player_list:
             current_message = message.content.split()
             if (len(current_message) < 3):
                 await message.channel.send(error_message)
@@ -107,7 +109,7 @@ async def on_message(message):
                 flag = 1
             column = int(current_message[1]) - 1
             row = int(current_message[2]) - 1
-            if ((row >= player_list[current_player][1]) or (column >= player_list[current_player][1]) )and flag == 0:
+            if ((row >= player_list[current_player][1]) or (column >= player_list[current_player][1]) ) and ((row <= 0) or (column <= 0)) and flag == 0:
                 await message.channel.send("Please enter row and column within range")
             elif (player_list[current_player][3][column][row]== 1) and flag == 0:
                 await message.channel.send("Please enter a box you haven't already guessed")
