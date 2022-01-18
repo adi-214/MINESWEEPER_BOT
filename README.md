@@ -30,4 +30,5 @@ Discord  ```$ sudo snap install discord```
 ## RUN
 
 Download discord and use the following command on a text chaneel the bot has access to to understand the game and to learn how to use the bot.
+
 ```mine help```
