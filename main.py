@@ -75,7 +75,7 @@ async def on_message(message):
     if (message.content.lower()).startswith('mine'):
         current_player = message.author
         if message.content.lower() == "mine help":
-            await message.channel.send("The number of top of the columns represent the total number of number of bombs in that particular column. \nThe number on the right represents the total number of bombs in that particular row. \nThe objective of the goal is to select all the safe tiles. \nTo start playing enter in the following format \nmine <grid_size> <difficulty>\nGrid size must be greater than or equal to 3 \nand lesser than or equal to 10 \nValid difficulty level are <easy> / <medium> / <hard> \nMake your move in the following format \nmine <column number> <row number> \nTo quit playing use the command <mine quit>\n")
+            await message.channel.send("The number of top of the columns represent the total number of bombs in that particular column. \nThe number on the right represents the total number of bombs in that particular row. \nThe objective of the goal is to select all the safe tiles. \nTo start playing enter in the following format \nmine <grid_size> <difficulty>\nGrid size must be greater than or equal to 3 \nand lesser than or equal to 10 \nValid difficulty level are <easy> / <medium> / <hard> \nMake your move in the following format \nmine <column number> <row number> \nTo quit playing use the command <mine quit>\n")
         elif current_player not in player_list:
             current_message = message.content.split()
             if (len(current_message) < 3):
