@@ -107,9 +107,11 @@ async def on_message(message):
             elif (len(current_message) < 3):
                 await message.channel.send(wrong_move_message)
                 flag = 1
+            if flag == 1:
+                await message.channel.send(print_grid(game_grid, guessed_grid, grid_size))
             column = int(current_message[1]) - 1
             row = int(current_message[2]) - 1
-            if ((row >= player_list[current_player][1]) or (column >= player_list[current_player][1]) ) and ((row <= 0) or (column <= 0)) and flag == 0:
+            if ((row >= player_list[current_player][1]) or (column >= player_list[current_player][1]) ) and ((row <= 0) or (column <= 0)) and (flag == 0):
                 await message.channel.send("Please enter row and column within range")
             elif (player_list[current_player][3][column][row]== 1) and flag == 0:
                 await message.channel.send("Please enter a box you haven't already guessed")
